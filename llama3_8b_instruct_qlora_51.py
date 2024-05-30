@@ -32,7 +32,7 @@ pretrained_model_name_or_path = '/home/nfs02/model/llama-3-8b-instruct'
 use_varlen_attn = False
 
 # Data
-alpaca_en_path = '/home/nfs03/dongjc/diverse-data-selection/gsm14e5-05.json'
+alpaca_en_path = '/home/nfs04/dongjc/in-context-SFT/data/gsm8k_alpaca.json'
 prompt_template = PROMPT_TEMPLATE.llama3_chat
 max_length = 2048
 pack_to_max_length = True

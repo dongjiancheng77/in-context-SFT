@@ -31,7 +31,7 @@ pretrained_model_name_or_path = '/home/nfs02/model/llama-3-8b'
 use_varlen_attn = False
 
 # Data
-alpaca_en_path = '/home/nfs04/dongjc/in-context-SFT/pack-filtered/gsmroberta-2.json'
+alpaca_en_path = '/home/nfs02/dongjc/MoDS/diverse-data-selection/unique14bert-2.json'
 prompt_template = PROMPT_TEMPLATE.llama2_chat
 max_length = 2048
 pack_to_max_length = True
