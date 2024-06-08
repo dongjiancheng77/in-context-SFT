@@ -26,6 +26,9 @@ from xtuner.utils import PROMPT_TEMPLATE, SYSTEM_TEMPLATE
 #######################################################################
 #                          PART 1  Settings                           #
 #######################################################################
+login(token="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")
+
+
 # Model
 pretrained_model_name_or_path = 'meta-llama/Meta-Llama-3-8B'
 use_varlen_attn = False
@@ -220,3 +223,4 @@ randomness = dict(seed=None, deterministic=False)
 
 # set log processor
 log_processor = dict(by_epoch=False)
+logout()
