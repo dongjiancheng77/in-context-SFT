@@ -1,8 +1,8 @@
 import json
 
 # 定义输入和输出文件的路径
-input_file_path = 'train_converted.json'
-output_file_path = 'train_converted_alpaca_v2.json'
+input_file_path = 'MathInstruct/MathInstruct.json'
+output_file_path = 'MathInstruct/MathInstruct_alpaca.json'
 
 # 读取原始JSON文件
 with open(input_file_path, 'r', encoding='utf-8') as input_file:
