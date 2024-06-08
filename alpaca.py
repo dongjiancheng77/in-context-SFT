@@ -19,7 +19,7 @@ with open(input_file_path, 'r', encoding='utf-8') as input_file:
             "input": "",
             "output": output
          }
-    alpaca_formatted_data.append(alpaca_entry)
+        alpaca_formatted_data.append(alpaca_entry)
 
     # 写入新的JSON文件
     with open(output_file_path, 'w', encoding='utf-8') as output_file:
