@@ -75,7 +75,7 @@ def greedy_tsp(embeddings):
         while True:
             valid = True
             # 检查路径中最后1, 2, 3, 4个点
-            for back in range(1, min(5, len(path))):
+            for back in range(1, min(5, len(path)+1)):
                 if len(path) > back and torch.norm(embeddings[path[-back]] - embeddings[next_index]).item() < threshold:
                     valid = False
                     break

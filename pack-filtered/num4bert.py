@@ -38,16 +38,16 @@ def greedy_tsp(embeddings):
     path = [0]
     visited[0] = True
 
-    # dist_matrix = torch.cdist(embeddings, embeddings, p=2)
+    dist_matrix = torch.cdist(embeddings, embeddings, p=2)
 
-    # # 将距离矩阵转换为上三角矩阵，排除对角线（自身距离为0），并将其转换为一维数组
-    # upper_tri_dist = dist_matrix.triu(diagonal=1).flatten()
-    # # 移除零元素（自身到自身的距离为0，但在上三角矩阵中被包含）
-    # all_distances = upper_tri_dist[upper_tri_dist > 0]
-    # all_distances_cpu = all_distances.cpu().numpy()
+    # 将距离矩阵转换为上三角矩阵，排除对角线（自身距离为0），并将其转换为一维数组
+    upper_tri_dist = dist_matrix.triu(diagonal=1).flatten()
+    # 移除零元素（自身到自身的距离为0，但在上三角矩阵中被包含）
+    all_distances = upper_tri_dist[upper_tri_dist > 0]
+    all_distances_cpu = all_distances.cpu().numpy()
 
-    # threshold = np.percentile(all_distances_cpu, 2)
-    threshold = 6.7
+    threshold = np.percentile(all_distances_cpu, 2)
+    # threshold = 6.7
     y=0
     for x in range(1, n):
         print('x:',x)
@@ -70,8 +70,12 @@ def greedy_tsp(embeddings):
         while True:
             valid = True
             # 检查路径中最后1, 2, 3, 4个点
-            for back in range(1, min(5, len(path))):
-                if len(path) > back and torch.norm(embeddings[path[-back]] - embeddings[next_index]).item() < threshold:
+            # print(torch.norm(embeddings[path[-1]] - embeddings[next_index]).item(),'and',distances[next_index])
+            # 检查当前的next_index是否小于阈值
+            # if distances[next_index] < threshold:
+            #     valid = False
+            for back in range(1, min(5, len(path)+1)):
+                if torch.norm(embeddings[path[-back]] - embeddings[next_index]).item() < threshold:
                     valid = False
                     break
 
@@ -112,13 +116,13 @@ def main(input_file, output_file):
 
     instruction_list = [d["instruction"] for d in data]
     print('Processing instructions...')
-    if os.path.exists("bert_embeddingmunique_bert.npy"):
-        text_embedding = np.load("bert_embeddingmunique_bert.npy")
+    if os.path.exists("bert_embeddinggsm_bert.npy"):
+        text_embedding = np.load("bert_embeddinggsm_bert.npy")
         print(1)
     else:
         text_embedding = bert_embedding(instruction_list)
         print(2)
-        np.save("bert_embeddingmunique_bert.npy",text_embedding)
+        np.save("bert_embeddinggsm_bert.npy",text_embedding)
     # 打印原始顺序的距离
     print("Distances in the original order:")
     original_order = list(range(len(instruction_list)))
