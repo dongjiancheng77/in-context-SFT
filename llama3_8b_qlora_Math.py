@@ -1,4 +1,5 @@
 # Copyright (c) OpenMMLab. All rights reserved.
+from huggingface_hub import login, logout
 import torch
 from datasets import load_dataset
 from mmengine.dataset import DefaultSampler
@@ -26,12 +27,15 @@ from xtuner.utils import PROMPT_TEMPLATE, SYSTEM_TEMPLATE
 #######################################################################
 #                          PART 1  Settings                           #
 #######################################################################
+login(token="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")
+
+
 # Model
-pretrained_model_name_or_path = '/home/nfs02/model/llama-3-8b'
+pretrained_model_name_or_path = 'meta-llama/Meta-Llama-3-8B'
 use_varlen_attn = False
 
 # Data
-alpaca_en_path = '/home/nfs02/dongjc/MoDS/diverse-data-selection/unique14bert-2.json'
+alpaca_en_path = 'MathInstruct/MathInstruct_alpaca.json'
 prompt_template = PROMPT_TEMPLATE.llama2_chat
 max_length = 2048
 pack_to_max_length = True
@@ -220,3 +224,4 @@ randomness = dict(seed=None, deterministic=False)
 
 # set log processor
 log_processor = dict(by_epoch=False)
+logout()
