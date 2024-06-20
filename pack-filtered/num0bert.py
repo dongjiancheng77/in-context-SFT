@@ -64,29 +64,6 @@ def greedy_tsp(embeddings):
 
         # Ensure the selected node distance is greater than the threshold
         next_index = np.argmin(distances)
-        max_attempts = 10000  # 设置一个最大尝试次数
-        attempts = 0  # 初始化尝试次数计数器
-
-        while True:
-            valid = True
-            # 检查路径中最后1, 2, 3, 4个点
-            for back in range(1, min(5, len(path))):
-                if len(path) > back and torch.norm(embeddings[path[-back]] - embeddings[next_index]).item() < threshold:
-                    valid = False
-                    break
-
-            if valid:
-                print('false_attempts:', y)
-                break
-            else:
-                y += 1
-                distances[next_index] = np.inf
-                next_index = np.argmin(distances)
-
-            attempts += 1  # 更新尝试次数
-            if attempts >= max_attempts:
-                print(f"Exiting loop after {max_attempts} attempts.")
-                break
         path.append(next_index)  # Add to path
         visited[next_index] = True
     print(threshold)
