@@ -27,7 +27,6 @@ from xtuner.utils import PROMPT_TEMPLATE, SYSTEM_TEMPLATE
 #######################################################################
 #                          PART 1  Settings                           #
 #######################################################################
-login(token="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")
 
 
 # Model
@@ -224,4 +223,3 @@ randomness = dict(seed=None, deterministic=False)
 
 # set log processor
 log_processor = dict(by_epoch=False)
-logout()
