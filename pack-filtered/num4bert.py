@@ -38,7 +38,7 @@ def greedy_tsp(embeddings):
     path = [0]
     visited[0] = True
 
-    dist_matrix = torch.cdist(embeddings, embeddings, p=2)
+    dist_matrix = torch.cdist(embeddings[0:int(n/5)], embeddings[0:int(n/5)], p=2)
 
     # 将距离矩阵转换为上三角矩阵，排除对角线（自身距离为0），并将其转换为一维数组
     upper_tri_dist = dist_matrix.triu(diagonal=1).flatten()
@@ -116,13 +116,13 @@ def main(input_file, output_file):
 
     instruction_list = [d["instruction"] for d in data]
     print('Processing instructions...')
-    if os.path.exists("bert_embeddinggsm_bert.npy"):
-        text_embedding = np.load("bert_embeddinggsm_bert.npy")
+    if os.path.exists("bert_embeddingalp_bert.npy"):
+        text_embedding = np.load("bert_embeddingalp_bert.npy")
         print(1)
     else:
         text_embedding = bert_embedding(instruction_list)
         print(2)
-        np.save("bert_embeddinggsm_bert.npy",text_embedding)
+        np.save("bert_embeddingalp_bert.npy",text_embedding)
     # 打印原始顺序的距离
     print("Distances in the original order:")
     original_order = list(range(len(instruction_list)))
