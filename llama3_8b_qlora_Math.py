@@ -34,7 +34,7 @@ pretrained_model_name_or_path = 'meta-llama/Meta-Llama-3-8B'
 use_varlen_attn = False
 
 # Data
-alpaca_en_path = 'MathInstruct/MathInstruct_alpaca.json'
+alpaca_en_path = 'MathInstruct/MathInstruct_alpaca_num4bert.json'
 prompt_template = PROMPT_TEMPLATE.llama2_chat
 max_length = 2048
 pack_to_max_length = True
