@@ -30,7 +30,7 @@ from xtuner.utils import PROMPT_TEMPLATE, SYSTEM_TEMPLATE
 
 
 # Model
-pretrained_model_name_or_path = 'meta-llama/Meta-Llama-3-8B'
+pretrained_model_name_or_path = '/home/nfs02/model/llama-3-8b'
 use_varlen_attn = False
 
 # Data
