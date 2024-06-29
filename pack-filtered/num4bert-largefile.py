@@ -8,8 +8,8 @@ import torch
 
 @torch.no_grad()
 def bert_embedding(texts, batch=100):
-    tokenizer = BertTokenizer.from_pretrained('../models/bert-base-uncased')
-    model = AutoModel.from_pretrained('../models/bert-base-uncased').cuda()
+    tokenizer = BertTokenizer.from_pretrained('google-bert/bert-base-uncased')
+    model = AutoModel.from_pretrained('google-bert/bert-base-uncased').cuda()
     encoded_texts = tokenizer(texts, return_tensors="pt", truncation=True, padding=True, max_length=96)
     encoded_texts = encoded_texts.to("cuda")
     cls_hid_li = []
